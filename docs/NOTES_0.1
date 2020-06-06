@@ -1,0 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    NOTES_0.1                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: home <home@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/06/06 05:34:50 by home              #+#    #+#              #
+#    Updated: 2020/06/06 05:43:35 by home             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Bound attributes:
+
+	When initializing one parameter, to use the parameter itself
+	and not the value. This way it is less prone to error in case
+	another programmer were to change something.
+
+	Even though the usage of creating a macro would fulfill this,
+	this is still better practice in my opinion. Not that the two
+	things can't be used. Use the macro to set the parameter, but
+	instead of using the macro later on, use the parameter if
+	it is within scope.
