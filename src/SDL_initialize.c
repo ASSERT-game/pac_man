@@ -6,13 +6,13 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 05:22:09 by home              #+#    #+#             */
-/*   Updated: 2020/06/06 05:49:39 by home             ###   ########.fr       */
+/*   Updated: 2020/06/06 11:43:21 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
 
-int		SDLU_start(t_display *dest)
+void	SDLU_start(t_display *dest)
 {
 	SDL_Window	*window;
 	SDL_Surface	*surface;
@@ -20,8 +20,8 @@ int		SDLU_start(t_display *dest)
 	dest->width = WIN_WIDTH;
 	dest->height = WIN_HEIGHT;
 	dest->size = dest->width * dest->height;
-	SDL_Init(SDL_INIT_EVERYTHING);
 
+	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
 				WIN_TITLE,
 				WIN_POS_X, WIN_POS_Y,
@@ -32,5 +32,4 @@ int		SDLU_start(t_display *dest)
 
 	dest->window = window;
 	dest->pixels = surface->pixels;
-
 }
