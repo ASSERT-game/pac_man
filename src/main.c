@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:28:40 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:52:27 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	game_context_initialize(t_game_context *game_state)
 	game_state->fright_ticks = 0;
 	game_state->game_tick = 0;
 	game_state->active = true;
+
+	srand(time(NULL));
 }
 
 int	main(void)

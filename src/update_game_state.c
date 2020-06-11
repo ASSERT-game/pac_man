@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:12:16 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:27:42 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:32:59 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void	update_clyde(t_game_context *game_state)
 		game_state->clyde.target_loc_x = game_state->clyde.scatter_loc_x;
 		game_state->clyde.target_loc_y = game_state->clyde.scatter_loc_y;
 	}
+
 	common_ghost_update(game_state, &(game_state->clyde));
 }
 
