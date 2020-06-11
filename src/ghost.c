@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 19:05:36 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 02:07:20 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:03:44 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,16 @@ void	move_ghost(t_game_context *game_state, t_ghost *ghost)
 		result = UP;
 		min_dis = dis;
 	}
-	dis = ((x - t_x) * (x - t_x) + (y + 1 - t_y) * (y + 1 - t_y));
-	if ((aviable_dir & DOWN) && dis < min_dis)
-	{
-		result = DOWN;
-		min_dis = dis;
-	}
 	dis = ((x - 1 - t_x) * (x - 1 - t_x) + (y - t_y) * (y - t_y));
 	if ((aviable_dir & LEFT) && dis < min_dis)
 	{
 		result = LEFT;
+		min_dis = dis;
+	}
+	dis = ((x - t_x) * (x - t_x) + (y + 1 - t_y) * (y + 1 - t_y));
+	if ((aviable_dir & DOWN) && dis < min_dis)
+	{
+		result = DOWN;
 		min_dis = dis;
 	}
 	dis = ((x + 1 - t_x) * (x + 1 - t_x) + (y - t_y) * (y - t_y));
@@ -119,9 +119,9 @@ void	move_ghost(t_game_context *game_state, t_ghost *ghost)
 	}
 
 		 if (result & UP)    { ghost->loc_y--; ghost->from = DOWN;  }
+	else if (result & LEFT)  { ghost->loc_x--; ghost->from = RIGHT; }
 	else if (result & DOWN)  { ghost->loc_y++; ghost->from = UP;    }
 	else if (result & RIGHT) { ghost->loc_x++; ghost->from = LEFT;  }
-	else if (result & LEFT)  { ghost->loc_x--; ghost->from = RIGHT; }
 
 	ghost->mode &= ~(TURN_STUN);
 	if ((result == UP || result == DOWN) && (ghost->from == RIGHT || ghost->from == LEFT))
