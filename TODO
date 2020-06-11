@@ -3,11 +3,12 @@
 [X] Clyde Movement
 [X] Frighten State Movement
 [X] Scatter Mode
+[C] Freeze
 
-[ ] Lives
-[ ] Reset on Death
-[ ] Ghost Door
+[X] Lives
 [ ] Score
+[ ] Ghost Door
+[ ] Reset on Death
 
 [ ] GPS stabilizer
 [ ] Time Mode Switching
@@ -29,4 +30,5 @@
 
 Legend:
 	X -> Done
+	C -> Done but unnecessary
 	L -> Later or not at all
