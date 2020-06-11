@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 23:57:47 by home             ###   ########.fr       */
+/*   Updated: 2020/06/11 01:21:34 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	game_context_initialize(t_game_context *game_state)
 	fill_ghost(&(game_state->inky),   0x00AAFF, 12, 11, 27, 32);
 	fill_ghost(&(game_state->clyde),  0xEE7777, 16, 11,  0, 32);
 
-	game_state->score = 0;
 	game_state->lives = 5;
+	game_state->score = 0;
+	game_state->eaten = 0;
 	game_state->freeze = 1;
+
 	game_state->game_tick = 0;
 	game_state->fright_ticks = 0;
 	game_state->freeze_ticks = 0;
@@ -61,9 +63,9 @@ int	main(void)
 		draw_ghost_tile(display.pixels, game_state.clyde.loc_x,  game_state.clyde.loc_y + 3,  game_state.clyde.color);
 		draw_ghost_tile(display.pixels, game_state.inky.loc_x,   game_state.inky.loc_y + 3,   game_state.inky.color);
 
-		draw_target(display.pixels, game_state.blinky.target_loc_x,  game_state.blinky.target_loc_y + 3,  game_state.blinky.color);
+		draw_target(display.pixels, game_state.blinky.target_loc_x, game_state.blinky.target_loc_y + 3, game_state.blinky.color);
 		draw_target(display.pixels, game_state.pinky.target_loc_x,  game_state.pinky.target_loc_y + 3,  game_state.pinky.color);
-		draw_target(display.pixels, game_state.inky.target_loc_x,  game_state.inky.target_loc_y + 3,  game_state.inky.color);
+		draw_target(display.pixels, game_state.inky.target_loc_x,   game_state.inky.target_loc_y + 3,   game_state.inky.color);
 		draw_target(display.pixels, game_state.clyde.target_loc_x,  game_state.clyde.target_loc_y + 3,  game_state.clyde.color);
 
 		SDL_UpdateWindowSurface(display.window);
@@ -71,5 +73,7 @@ int	main(void)
 		game_state.game_tick++;
 		usleep(GAME_TICK);
 	}
+	SDLU_close(&display);
+	printf("Closed Cleanly\n");
 	return (0);
 }

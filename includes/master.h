@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:38:32 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 23:14:06 by home             ###   ########.fr       */
+/*   Updated: 2020/06/11 00:46:40 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "window_config.h"
 
 void		SDLU_start(t_display *dest);
+void		SDLU_close(t_display *display);
 
 void		fill_map(t_map *map_dest);
 void		fill_ghost(t_ghost *ghost, int color, int x, int y, int s_x, int s_y);

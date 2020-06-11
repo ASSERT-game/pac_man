@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 23:47:41 by home             ###   ########.fr       */
+/*   Updated: 2020/06/11 00:31:48 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ typedef struct	s_ghost
 
 typedef struct	s_game_context
 {
-	bool		active;
 	t_map		map;
 
-	int			lives;
 	t_player	player;
 
 	t_ghost		blinky;
@@ -93,6 +91,7 @@ typedef struct	s_game_context
 	t_ghost		inky;
 	t_ghost		clyde;
 
+	int			lives;
 	int			score;
 	int			eaten;
 	int			freeze;
@@ -100,6 +99,7 @@ typedef struct	s_game_context
 	int			game_tick;
 	int			fright_ticks;
 	int			freeze_ticks;
+	bool		active;
 }				t_game_context;
 
 #endif
