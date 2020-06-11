@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 19:05:36 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 21:42:24 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 22:00:23 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	common_ghost_update(t_game_context *game_state, t_ghost *ghost)
 			ghost->mode = EATEN;
 		if (game_state->fright_ticks == 0)
 			ghost->mode = CHASE;
-		if (game_state->fright_ticks < 21 && game_state->fright_ticks % 2 == 0)
+		if (game_state->fright_ticks < 200 && game_state->fright_ticks % 4 == 0)
 				ghost->color ^= (0xDDDDDD ^ 0x0000FF);
 	}
 	if (ghost->mode == EATEN)
@@ -80,13 +80,12 @@ int		random_dir_pick(int available_dir)
 	if (available_dir & RIGHT)
 		count_dirs++;
 
-	if (count_dirs == 1)
-		pick = 1;
-
 	a = rand();
 	b = rand();
 	c = rand();
 
+	if (count_dirs == 1)
+		pick = 1;
 	if (count_dirs == 2)
 	{
 		if (a > b)
@@ -94,7 +93,6 @@ int		random_dir_pick(int available_dir)
 		else
 			pick = 2;
 	}
-
 	if (count_dirs == 3)
 	{
 		if (a > b && a > c)
@@ -162,7 +160,7 @@ void	move_ghost(t_game_context *game_state, t_ghost *ghost)
 	if (ghost->mode == FRIGHTEN)
 	{
 		available_dir = random_dir_pick(available_dir);
-		if (game_state->game_tick % 5 == 0)
+		if (game_state->game_tick % 2 == 0)
 			return ;
 	}
 

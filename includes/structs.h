@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:15:46 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 21:55:46 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct	s_ghost
 	int			target_loc_y;
 }				t_ghost;
 
-#define FRIGHT_DURATION 50
+#define FRIGHT_DURATION 800
 
 typedef struct	s_game_context
 {
