@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 21:55:46 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:47:41 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ typedef struct	s_player
 
 typedef enum	e_ghost_state
 {
-	SCATTER		= 0b00001,
-	CHASE		= 0b00010,
-	FRIGHTEN	= 0b00100,
-	EATEN		= 0b01000,
-	TURN_STUN	= 0b10000,
+	SCATTER		= 0b000001,
+	CHASE		= 0b000010,
+	FRIGHTEN	= 0b000100,
+	EATEN		= 0b001000,
+	FREEZE		= 0b010000,
+	TURN_STUN	= 0b100000,
 }				t_ghostmode;
 
 typedef struct	s_ghost
@@ -76,13 +77,15 @@ typedef struct	s_ghost
 	int			target_loc_y;
 }				t_ghost;
 
-#define FRIGHT_DURATION 800
+#define FRIGHT_DURATION 120
+#define FREEZE_DURATION 75
 
 typedef struct	s_game_context
 {
 	bool		active;
 	t_map		map;
 
+	int			lives;
 	t_player	player;
 
 	t_ghost		blinky;
@@ -91,9 +94,12 @@ typedef struct	s_game_context
 	t_ghost		clyde;
 
 	int			score;
+	int			eaten;
+	int			freeze;
 
 	int			game_tick;
 	int			fright_ticks;
+	int			freeze_ticks;
 }				t_game_context;
 
 #endif

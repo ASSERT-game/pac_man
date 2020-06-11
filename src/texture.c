@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 10:31:33 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 03:49:13 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:53:11 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,31 @@ void	draw_power_tile(unsigned char *pixel_array, int x, int y)
 	color_in(pixel_array, color, x * 8 + 3 + 1, y * 8 + 3 + 2);
 }
 
+void	draw_freeze_tile(unsigned char *pixel_array, int x, int y)
+{
+	int	color;
+	int	i;
+
+	i = 0;
+	color = 0x00DDFF;
+	while (i < 6)
+	{
+		color_in(pixel_array, color, x * 8 + 1 + i, y * 8 + 3 + 0);
+		color_in(pixel_array, color, x * 8 + 1 + i, y * 8 + 3 + 1);
+		color_in(pixel_array, color, x * 8 + 1 + i, y * 8 + 3 + 2);
+		color_in(pixel_array, color, x * 8 + 1 + i, y * 8 + 3 + 3);
+		i++;
+	}
+
+	color_in(pixel_array, color, x * 8 + 1, y * 8 + 1);
+	color_in(pixel_array, color, x * 8 + 1, y * 8 + 2);
+	color_in(pixel_array, color, x * 8 + 6, y * 8 + 1);
+	color_in(pixel_array, color, x * 8 + 6, y * 8 + 2);
+
+	color_in(pixel_array, color, x * 8 + 3, y * 8 + 2);
+	color_in(pixel_array, color, x * 8 + 4, y * 8 + 2);
+}
+
 void	draw_map(t_map map, unsigned char *pixel_array)
 {
 	int	x;
@@ -133,6 +158,30 @@ void	draw_map(t_map map, unsigned char *pixel_array)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	draw_lives(unsigned char *pixel_array, int lives)
+{
+	int	i;
+
+	i = 0;
+	while (i < lives)
+	{
+		draw_pacman_tile(pixel_array, 0 + i, 34);
+		i++;
+	}
+}
+
+void	draw_freeze(unsigned char *pixel_array, int freeze)
+{
+	int	i;
+
+	i = 0;
+	while (i < freeze)
+	{
+		draw_freeze_tile(pixel_array, 0 + i, 35);
+		i++;
 	}
 }
 
@@ -158,32 +207,32 @@ void	texture_map(int fetch_code)
 	image[14] = 0b00001100;
 	image[15] = 0b01111110;
 
-	image[16] = 0b00111110;
-	image[17] = 0b00000010;
-	image[18] = 0b00000110;
-	image[19] = 0b00000110;
+	image[16] = 0b00111100;
+	image[17] = 0b01000010;
+	image[18] = 0b00000010;
+	image[19] = 0b00001110;
 	image[20] = 0b00111100;
-	image[21] = 0b01100000;
-	image[22] = 0b01100010;
+	image[21] = 0b01000000;
+	image[22] = 0b01000010;
 	image[23] = 0b00111110;
 
-	image[24] = 0b00000000;
-	image[25] = 0b00000000;
-	image[26] = 0b00000000;
-	image[27] = 0b00000000;
-	image[28] = 0b00000000;
-	image[29] = 0b00000000;
-	image[30] = 0b00000000;
-	image[31] = 0b00000000;
+	image[24] = 0b00111100;
+	image[25] = 0b01000010;
+	image[26] = 0b00000010;
+	image[27] = 0b00111100;
+	image[28] = 0b00000100;
+	image[29] = 0b00000010;
+	image[30] = 0b01000010;
+	image[31] = 0b00111100;
 
-	image[32] = 0b00000000;
-	image[33] = 0b00000000;
-	image[34] = 0b00000000;
-	image[35] = 0b00000000;
-	image[36] = 0b00000000;
-	image[37] = 0b00000000;
-	image[38] = 0b00000000;
-	image[39] = 0b00000000;
+	image[32] = 0b01000100;
+	image[33] = 0b01000100;
+	image[34] = 0b01000100;
+	image[35] = 0b00111100;
+	image[36] = 0b00000100;
+	image[37] = 0b00000100;
+	image[38] = 0b00000100;
+	image[39] = 0b00000100;
 
 	image[40] = 0b00000000;
 	image[41] = 0b00000000;

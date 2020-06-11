@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 11:30:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/09 19:24:43 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:48:06 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	process_user_input(t_game_context *game_state)
 		game_state->player.direction = LEFT;
 	if (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_RIGHT])
 		game_state->player.direction = RIGHT;
+	if (keystate[SDL_SCANCODE_SPACE] && game_state->freeze > 0)
+	{
+		game_state->freeze_ticks = FREEZE_DURATION;
+		game_state->freeze--;
+	}
+
 }

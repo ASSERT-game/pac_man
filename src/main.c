@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:52:27 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:57:47 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ void	game_context_initialize(t_game_context *game_state)
 	fill_ghost(&(game_state->clyde),  0xEE7777, 16, 11,  0, 32);
 
 	game_state->score = 0;
-	game_state->fright_ticks = 0;
+	game_state->lives = 5;
+	game_state->freeze = 1;
 	game_state->game_tick = 0;
+	game_state->fright_ticks = 0;
+	game_state->freeze_ticks = 0;
 	game_state->active = true;
 
 	srand(time(NULL));
@@ -50,6 +53,8 @@ int	main(void)
 		draw_map(game_state.map, display.pixels);
 
 		draw_pacman_tile(display.pixels, game_state.player.loc_x, game_state.player.loc_y + 3);
+		draw_lives(display.pixels, game_state.lives);
+		draw_freeze(display.pixels, game_state.freeze);
 
 		draw_ghost_tile(display.pixels, game_state.blinky.loc_x, game_state.blinky.loc_y + 3, game_state.blinky.color);
 		draw_ghost_tile(display.pixels, game_state.pinky.loc_x,  game_state.pinky.loc_y + 3,  game_state.pinky.color);

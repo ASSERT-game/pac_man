@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 19:05:36 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 22:00:23 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:06:13 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	common_ghost_update(t_game_context *game_state, t_ghost *ghost)
 			ghost->mode = EATEN;
 		if (game_state->fright_ticks == 0)
 			ghost->mode = CHASE;
-		if (game_state->fright_ticks < 200 && game_state->fright_ticks % 4 == 0)
-				ghost->color ^= (0xDDDDDD ^ 0x0000FF);
+		if (game_state->fright_ticks < 50 && game_state->fright_ticks % 4 == 0)
+			ghost->color ^= (0xDDDDDD ^ 0x0000FF);
 	}
 	if (ghost->mode == EATEN)
 	{
@@ -51,6 +51,11 @@ void	common_ghost_update(t_game_context *game_state, t_ghost *ghost)
 	{
 		ghost->target_loc_x = ghost->scatter_loc_x;
 		ghost->target_loc_y = ghost->scatter_loc_y;
+	}
+	if (ghost->mode == SCATTER || ghost->mode == CHASE)
+	{
+		if (ghost->loc_x == game_state->player.loc_x && ghost->loc_y == game_state->player.loc_y)
+			game_state->lives--;
 	}
 }
 
@@ -145,6 +150,9 @@ void	move_ghost(t_game_context *game_state, t_ghost *ghost)
 		(x == 15 && y == 23))
 		available_dir &= ~(UP);
 
+	if (game_state->freeze_ticks > 0)
+		return ;
+
 	if (ghost->mode & TURN_STUN)
 		available_dir &= ~(UP | DOWN | LEFT | RIGHT);
 
@@ -163,6 +171,8 @@ void	move_ghost(t_game_context *game_state, t_ghost *ghost)
 		if (game_state->game_tick % 2 == 0)
 			return ;
 	}
+	if (ghost->mode == EATEN && game_state->game_tick % 4 == 0)
+		return ;
 
 	int	t_x;
 	int	t_y;

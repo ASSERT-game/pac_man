@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:38:32 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:19:57 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:14:06 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void		fill_ghost(t_ghost *ghost, int color, int x, int y, int s_x, int s_y);
 void		draw_wall_tile(unsigned char *pixel_array, int x, int y);
 void		draw_pacman_tile(unsigned char *pixel_array, int x, int y);
 void		draw_ghost_tile(unsigned char *pixel_array, int x, int y, int color);
+void		draw_lives(unsigned char *pixel_array, int lives);
 void		draw_target(unsigned char *pixel_array, int x, int y, int color);
+void		draw_freeze(unsigned char *pixel_array, int freeze);
 
 void		draw_map(t_map map, unsigned char *pixel_array);
 

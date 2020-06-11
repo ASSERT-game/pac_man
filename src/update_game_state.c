@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:12:16 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:32:59 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 23:48:48 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,11 +141,13 @@ void	update_game_state(t_game_context *game_state)
 	{
 		game_state->map[game_state->player.loc_y][game_state->player.loc_x] = ' ';
 		game_state->score++;
+		game_state->eaten++;
 	}
 	if (game_state->map[game_state->player.loc_y][game_state->player.loc_x] == 'P')
 	{
 		game_state->map[game_state->player.loc_y][game_state->player.loc_x] = ' ';
 		game_state->score++;
+		game_state->eaten++;
 		game_state->blinky.mode = FRIGHTEN;
 		game_state->pinky.mode = FRIGHTEN;
 		game_state->inky.mode = FRIGHTEN;
@@ -153,14 +155,22 @@ void	update_game_state(t_game_context *game_state)
 		game_state->fright_ticks = FRIGHT_DURATION;
 	}
 
-	move_player(game_state);
+	if (game_state->eaten >= 100)
+	{
+		game_state->lives++;
+		game_state->freeze++;
+		game_state->eaten -= 100;
+	}
+
+	if (game_state->lives >= 1)
+		move_player(game_state);
 
 	update_blinky(game_state);
 	update_pinky(game_state);
 	update_inky(game_state);
 	update_clyde(game_state);
 
-	if (game_state->game_tick % 6 != 0)
+	if (game_state->game_tick % 5 != 0)
 	{
 		move_ghost(game_state, &(game_state->blinky));
 		move_ghost(game_state, &(game_state->pinky));
@@ -175,6 +185,8 @@ void	update_game_state(t_game_context *game_state)
 
 	if (game_state->fright_ticks > 0)
 		game_state->fright_ticks--;
+	if (game_state->freeze_ticks > 0)
+		game_state->freeze_ticks--;
 
-	printf("SCORE: %d\n", game_state->score);
+	printf("SCORE: %d LIVES: %d\n", game_state->score, game_state->lives);
 }

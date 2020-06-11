@@ -1,26 +1,32 @@
 [X] Target Debug
 [X] Dir Preference
 [X] Clyde Movement
-[ ] GPS stabilizer
 [X] Frighten State Movement
 [X] Scatter Mode
-[ ] Target uses overflow
-[ ] Round Walls
-[ ] Ghost Door
 
 [ ] Lives
+[ ] Reset on Death
+[ ] Ghost Door
 [ ] Score
-[ ] Extra Pickups
 
-[ ] Player Turn Forgiveness
+[ ] GPS stabilizer
 [ ] Time Mode Switching
-[ ] Level Based Difficulty
-[ ] Pixel Offsets
 
-[ ] Animations
+[ ] Extra Pickups
+[ ] Player Turn Forgiveness
+[ ] Target uses overflow
+[ ] Round Walls
 
-[ ] Template Magic?
-[ ] Classes?
-[ ] Sound?
-[ ] Double Buffer Game State
-[ ] Terminalize Graphics
+[L] Level Based Difficulty
+
+[L] Animations
+
+[L] Template Magic?
+[L] Classes?
+[L] Sound?
+[L] Double Buffer Game State
+[L] Terminalize Graphics
+
+Legend:
+	X -> Done
+	L -> Later or not at all
