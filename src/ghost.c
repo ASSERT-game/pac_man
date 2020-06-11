@@ -6,15 +6,19 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 19:05:36 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 20:03:44 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:25:19 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "master.h"
 
-void	fill_ghost(t_ghost *ghost, int color, int x, int y)
+void	fill_ghost(t_ghost *ghost, int color, int x, int y, int s_x, int s_y)
 {
 	ghost->b_color = color;
+
+	ghost->scatter_loc_x = s_x;
+	ghost->scatter_loc_y = s_y;
+
 	ghost->loc_x = x;
 	ghost->loc_y = y;
 
@@ -43,6 +47,8 @@ void	common_ghost_update(t_game_context *game_state, t_ghost *ghost)
 		if (ghost->loc_x == 11 && ghost->loc_y == 11)
 			ghost->mode = CHASE;
 	}
+	ghost->target_loc_x = ghost->scatter_loc_x;
+	ghost->target_loc_y = ghost->scatter_loc_y;
 }
 
 void	double_buffer_update(t_game_context *game_state, t_ghost *ghost)

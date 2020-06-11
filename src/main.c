@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 03:50:48 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:28:40 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	game_context_initialize(t_game_context *game_state)
 	game_state->player.prev_dir = NONE;
 	game_state->player.direction = NONE;
 
-	fill_ghost(&(game_state->blinky), 0xFF0000, 11, 11);
-	fill_ghost(&(game_state->pinky),  0xFF33AA, 14, 11);
-	fill_ghost(&(game_state->inky),   0x00AAFF, 12, 11);
-	fill_ghost(&(game_state->clyde),  0xEE7777, 16, 13);
+	fill_ghost(&(game_state->blinky), 0xFF0000, 11, 11, 25, -3);
+	fill_ghost(&(game_state->pinky),  0xFF33AA, 14, 11,  2, -3);
+	fill_ghost(&(game_state->inky),   0x00AAFF, 12, 11, 27, 32);
+	fill_ghost(&(game_state->clyde),  0xEE7777, 16, 11,  0, 32);
 
 	game_state->score = 0;
 	game_state->fright_ticks = 0;
@@ -57,6 +57,7 @@ int	main(void)
 		draw_target(display.pixels, game_state.blinky.target_loc_x,  game_state.blinky.target_loc_y + 3,  game_state.blinky.color);
 		draw_target(display.pixels, game_state.pinky.target_loc_x,  game_state.pinky.target_loc_y + 3,  game_state.pinky.color);
 		draw_target(display.pixels, game_state.inky.target_loc_x,  game_state.inky.target_loc_y + 3,  game_state.inky.color);
+		draw_target(display.pixels, game_state.clyde.target_loc_x,  game_state.clyde.target_loc_y + 3,  game_state.clyde.color);
 
 		SDL_UpdateWindowSurface(display.window);
 		clear_screen(display.pixels);

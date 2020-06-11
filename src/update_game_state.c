@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:12:16 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 03:44:37 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:27:42 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,27 @@ void	update_inky(t_game_context *game_state)
 
 void	update_clyde(t_game_context *game_state)
 {
+	int	dis_to_pacman;
+	int	x;
+	int	y;
+	int	p_x;
+	int	p_y;
+
+	x = game_state->clyde.loc_x;
+	y = game_state->clyde.loc_y;
+	p_x = game_state->player.loc_x;
+	p_y = game_state->player.loc_y;
+	dis_to_pacman = (p_x - x) * (p_x - x) + (p_y - y) * (p_y - y);
+	if (dis_to_pacman > 64)
+	{
+		game_state->clyde.target_loc_x = game_state->player.loc_x;
+		game_state->clyde.target_loc_y = game_state->player.loc_y;
+	}
+	else
+	{
+		game_state->clyde.target_loc_x = game_state->clyde.scatter_loc_x;
+		game_state->clyde.target_loc_y = game_state->clyde.scatter_loc_y;
+	}
 	common_ghost_update(game_state, &(game_state->clyde));
 }
 
@@ -143,11 +164,13 @@ void	update_game_state(t_game_context *game_state)
 		move_ghost(game_state, &(game_state->blinky));
 		move_ghost(game_state, &(game_state->pinky));
 		move_ghost(game_state, &(game_state->inky));
+		move_ghost(game_state, &(game_state->clyde));
 	}
 
 	double_buffer_update(game_state, &(game_state->blinky));
 	double_buffer_update(game_state, &(game_state->pinky));
 	double_buffer_update(game_state, &(game_state->inky));
+	double_buffer_update(game_state, &(game_state->clyde));
 
 	if (game_state->fright_ticks > 0)
 		game_state->fright_ticks--;

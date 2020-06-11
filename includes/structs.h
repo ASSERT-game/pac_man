@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 03:05:42 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 01:46:25 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:15:46 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef struct	s_ghost
 	t_ghostmode	mode;
 
 	t_dir		from;
+
+	int			scatter_loc_x;
+	int			scatter_loc_y;
 
 	int			loc_x;
 	int			loc_y;

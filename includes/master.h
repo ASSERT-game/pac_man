@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:38:32 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 03:44:03 by home             ###   ########.fr       */
+/*   Updated: 2020/06/10 20:19:57 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 void		SDLU_start(t_display *dest);
 
 void		fill_map(t_map *map_dest);
-void		fill_ghost(t_ghost *ghost, int color, int x, int y);
+void		fill_ghost(t_ghost *ghost, int color, int x, int y, int s_x, int s_y);
 
 void		draw_wall_tile(unsigned char *pixel_array, int x, int y);
 void		draw_pacman_tile(unsigned char *pixel_array, int x, int y);
