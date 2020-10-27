@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 02:31:10 by home              #+#    #+#             */
-/*   Updated: 2020/06/20 18:47:27 by home             ###   ########.fr       */
+/*   Updated: 2020/10/27 02:05:20 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int	main(void)
 		usleep(GAME_TICK);
 	}
 	SDLU_close(&display);
-	printf("Closed Cleanly\n");
+	printf("Thank you for playing\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/06 10:36:43 by home              #+#    #+#             */
-/*   Updated: 2020/06/06 12:00:25 by home             ###   ########.fr       */
+/*   Updated: 2020/10/27 02:01:04 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	color_in(unsigned char *pixel_array, int color, int x, int y)
 	i = 0;
 	x *= UPSCALE;
 	y *= UPSCALE;
+	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
+		return ;
 	while (i < UPSCALE)
 	{
 		j = 0;
