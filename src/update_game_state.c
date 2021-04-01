@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 06:12:16 by home              #+#    #+#             */
-/*   Updated: 2020/06/10 23:48:48 by home             ###   ########.fr       */
+/*   Updated: 2020/10/27 02:08:30 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void	update_game_state(t_game_context *game_state)
 	update_inky(game_state);
 	update_clyde(game_state);
 
-	if (game_state->game_tick % 5 != 0)
+	if (game_state->game_tick % 3 != 0)
 	{
 		move_ghost(game_state, &(game_state->blinky));
 		move_ghost(game_state, &(game_state->pinky));
